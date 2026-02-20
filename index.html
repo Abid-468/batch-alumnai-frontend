@@ -17,7 +17,6 @@
                 <a href="index.html" class="navbar-link active">Home</a>
                 <a href="#find" class="navbar-link">Find</a>
                 <a href="#notice" class="navbar-link">Notice</a>
-                <a href="#updates" class="navbar-link">Updates</a>
                 <a href="login.html" class="navbar-btn">Login</a>
             </nav>
             <button type="button" class="navbar-toggle" aria-label="Toggle menu">
@@ -81,27 +80,131 @@
                 </div>
             </div>
         </section>
-
-        <section id="updates" class="updates-section">
-            <div class="updates-container">
-                <h2 class="section-title">Recent Updates</h2>
-                <ul class="updates-list">
-                    <li class="update-item">
-                        <span class="update-name">Priya S.</span> joined as <strong>Senior Engineer</strong> at TechCorp.
-                    </li>
-                    <li class="update-item">
-                        <span class="update-name">Rahul M.</span> moved to <strong>Mumbai</strong>.
-                    </li>
-                    <li class="update-item">
-                        <span class="update-name">Anita K.</span> started a new role at <strong>Design Studio</strong>.
-                    </li>
-                    <li class="update-item">
-                        <span class="update-name">Vikram J.</span> completed <strong>MS in CS</strong> from State University.
-                    </li>
-                </ul>
-            </div>
-        </section>
     </main>
+
+    <!-- Premium Profile Modal -->
+    <div id="profile-modal" class="profile-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+        <div class="profile-modal__backdrop"></div>
+        <div class="profile-modal__content">
+            <!-- Header Section with Gradient -->
+            <header class="profile-modal__header">
+                <button type="button" class="profile-modal-close profile-modal__close" aria-label="Close profile">&times;</button>
+                <div class="profile-modal__header-content">
+                    <img id="modal-image" class="profile-modal__image" src="" alt="" width="120" height="120">
+                    <div class="profile-modal__header-text">
+                        <h2 id="modal-name" class="profile-modal__name"></h2>
+                        <p id="modal-profession" class="profile-modal__profession"></p>
+                        <p id="modal-roll" class="profile-modal__roll"></p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Body Section -->
+            <div class="profile-modal__body">
+                <!-- Quick Info Grid -->
+                <section class="profile-modal__section">
+                    <div class="profile-modal__info-grid">
+                        <div class="profile-modal__info-item">
+                            <span class="profile-modal__info-label">Company</span>
+                            <span id="modal-company" class="profile-modal__info-value"></span>
+                        </div>
+                        <div class="profile-modal__info-item">
+                            <span class="profile-modal__info-label">Location</span>
+                            <span id="modal-current-location" class="profile-modal__info-value"></span>
+                        </div>
+                        <div class="profile-modal__info-item">
+                            <span class="profile-modal__info-label">Email</span>
+                            <a id="modal-email" class="profile-modal__info-value profile-modal__info-link" href=""></a>
+                        </div>
+                        <div class="profile-modal__info-item">
+                            <span class="profile-modal__info-label">Phone</span>
+                            <span id="modal-phone" class="profile-modal__info-value"></span>
+                        </div>
+                        <div class="profile-modal__info-item">
+                            <span class="profile-modal__info-label">Hometown</span>
+                            <span id="modal-hometown" class="profile-modal__info-value"></span>
+                        </div>
+                        <div class="profile-modal__info-item">
+                            <span class="profile-modal__info-label">Blood Group</span>
+                            <span id="modal-blood-group" class="profile-modal__info-value"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="profile-modal__section">
+                    <h3 class="profile-modal__section-title">Education</h3>
+                    <div class="profile-modal__detail-list">
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">University</span>
+                            <span id="modal-university" class="profile-modal__detail-value"></span>
+                        </div>
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">Department</span>
+                            <span id="modal-department" class="profile-modal__detail-value"></span>
+                        </div>
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">Batch</span>
+                            <span id="modal-batch" class="profile-modal__detail-value"></span>
+                        </div>
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">School</span>
+                            <span id="modal-school" class="profile-modal__detail-value"></span>
+                        </div>
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">College</span>
+                            <span id="modal-college" class="profile-modal__detail-value"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Family Section -->
+                <section class="profile-modal__section">
+                    <h3 class="profile-modal__section-title">Family</h3>
+                    <div class="profile-modal__detail-list">
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">Parents</span>
+                            <span id="modal-parents-name" class="profile-modal__detail-value"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interests & Work Section -->
+                <section class="profile-modal__section">
+                    <h3 class="profile-modal__section-title">Interests & Work</h3>
+                    <div class="profile-modal__detail-list">
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">Interests</span>
+                            <span id="modal-interests" class="profile-modal__detail-value"></span>
+                        </div>
+                        <div class="profile-modal__detail-item">
+                            <span class="profile-modal__detail-label">Work Sector</span>
+                            <span id="modal-work-sector" class="profile-modal__detail-value"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section class="profile-modal__section">
+                    <h3 class="profile-modal__section-title">About</h3>
+                    <p id="modal-bio" class="profile-modal__bio"></p>
+                </section>
+
+                <!-- Social Buttons -->
+                <div class="profile-modal__social">
+                    <a id="modal-linkedin" class="profile-modal__social-btn profile-modal__social-btn--linkedin" href="#" aria-label="LinkedIn">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a id="modal-github" class="profile-modal__social-btn profile-modal__social-btn--github" href="#" aria-label="GitHub">
+                        <span>GitHub</span>
+                    </a>
+                    <a id="modal-facebook" class="profile-modal__social-btn profile-modal__social-btn--facebook" href="#" aria-label="Facebook">
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
