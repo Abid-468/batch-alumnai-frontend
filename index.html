@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Alumni Directory | Batch CSE 20XX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Batch CSE 20XX</a>
+            <nav class="navbar-menu">
+                <a href="index.html" class="navbar-link active">Home</a>
+                <a href="#find" class="navbar-link">Find</a>
+                <a href="#notice" class="navbar-link">Notice</a>
+                <a href="#updates" class="navbar-link">Updates</a>
+                <a href="login.html" class="navbar-btn">Login</a>
+            </nav>
+            <button type="button" class="navbar-toggle" aria-label="Toggle menu">
+                <span class="navbar-toggle-bar"></span>
+                <span class="navbar-toggle-bar"></span>
+                <span class="navbar-toggle-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <h1 class="hero-title">Batch CSE 20XX</h1>
+                <p class="hero-description">Stay connected with your batch mates. Find classmates, share updates, and keep the spirit alive.</p>
+            </div>
+        </section>
+
+        <section id="find" class="search-section">
+            <div class="search-container">
+                <h2 class="section-title">Find Alumni</h2>
+                <div class="search-controls">
+                    <div class="search-input-wrap">
+                        <input type="text" id="search-name" class="search-input" placeholder="Search by name..." autocomplete="off">
+                    </div>
+                    <div class="search-select-wrap">
+                        <select id="filter-city" class="search-select" aria-label="Filter by city">
+                            <option value="">All Cities</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="students-section">
+            <div class="students-container">
+                <div id="students-grid" class="students-grid"></div>
+                <p id="no-results" class="no-results" hidden>No alumni match your search. Try different filters.</p>
+            </div>
+        </section>
+
+        <section id="notice" class="notice-section">
+            <div class="notice-container">
+                <h2 class="section-title">Notice Board</h2>
+                <div class="notice-board">
+                    <article class="notice-card">
+                        <span class="notice-date">Feb 15, 2025</span>
+                        <h3 class="notice-title">Batch reunion 2025</h3>
+                        <p class="notice-text">Save the date for our annual batch reunion. Venue and details will be shared soon.</p>
+                    </article>
+                    <article class="notice-card">
+                        <span class="notice-date">Jan 28, 2025</span>
+                        <h3 class="notice-title">Alumni meet-up in Bangalore</h3>
+                        <p class="notice-text">Bangalore-based alumni are organising a casual meet-up this month. Check the group for details.</p>
+                    </article>
+                    <article class="notice-card">
+                        <span class="notice-date">Jan 10, 2025</span>
+                        <h3 class="notice-title">Directory update</h3>
+                        <p class="notice-text">Please update your profile and current city so we can keep the directory accurate.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="updates" class="updates-section">
+            <div class="updates-container">
+                <h2 class="section-title">Recent Updates</h2>
+                <ul class="updates-list">
+                    <li class="update-item">
+                        <span class="update-name">Priya S.</span> joined as <strong>Senior Engineer</strong> at TechCorp.
+                    </li>
+                    <li class="update-item">
+                        <span class="update-name">Rahul M.</span> moved to <strong>Mumbai</strong>.
+                    </li>
+                    <li class="update-item">
+                        <span class="update-name">Anita K.</span> started a new role at <strong>Design Studio</strong>.
+                    </li>
+                    <li class="update-item">
+                        <span class="update-name">Vikram J.</span> completed <strong>MS in CS</strong> from State University.
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-brand">Batch CSE 20XX Alumni</p>
+            <p class="footer-copy">&copy; 2025 Batch Alumni Directory. Frontend only — no backend.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
