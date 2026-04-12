@@ -1,263 +1,14 @@
 /**
- * Batch Alumni Directory — Frontend script
- * Dummy data and dynamic rendering, search + filter.
+ * Batch Alumni Directory — loads alumni from API; search + filter when logged in.
  */
 
 (function () {
   "use strict";
 
-  var students = [
-    {
-      name: "Priya Sharma",
-      city: "Bangalore",
-      profession: "Senior Software Engineer",
-      image: "https://i.pravatar.cc/400?img=1",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX001",
-      company: "TechCorp",
-      currentLocation: "Bangalore",
-      email: "priya.sharma@example.com",
-      phone: "+91 98765 43210",
-      hometown: "Jaipur",
-      bloodGroup: "B+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "St. Mary's High School",
-      college: "State Engineering College",
-      parentsName: "Mr. Ramesh Sharma & Mrs. Sunita Sharma",
-      interests: "Reading, Trekking, Photography",
-      workSector: "Technology",
-      bio: "Senior software engineer with 8+ years of experience in distributed systems. Led multiple product launches at TechCorp. Love mentoring juniors and contributing to open source in my free time.",
-    },
-    {
-      name: "Rahul Mehta",
-      city: "Mumbai",
-      profession: "Product Manager",
-      image: "https://i.pravatar.cc/400?img=2",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX002",
-      company: "FinTech Solutions",
-      currentLocation: "Mumbai",
-      email: "rahul.mehta@example.com",
-      phone: "+91 98765 43211",
-      hometown: "Delhi",
-      bloodGroup: "O+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Delhi Public School",
-      college: "State Engineering College",
-      parentsName: "Mr. Vikram Mehta & Mrs. Pooja Mehta",
-      interests: "Cricket, Podcasts, Travel",
-      workSector: "Technology",
-      bio: "Product manager with a strong technical background. Focused on B2B SaaS and growth. Previously at two startups; now leading product at a fintech company in Mumbai.",
-    },
-    {
-      name: "Anita Krishnan",
-      city: "Chennai",
-      profession: "UX Designer",
-      image: "https://i.pravatar.cc/400?img=3",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX003",
-      company: "HealthTech Design Studio",
-      currentLocation: "Chennai",
-      email: "anita.krishnan@example.com",
-      phone: "+91 98765 43212",
-      hometown: "Coimbatore",
-      bloodGroup: "A+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Kendriya Vidyalaya",
-      college: "State Engineering College",
-      parentsName: "Mr. S. Krishnan & Mrs. Lakshmi Krishnan",
-      interests: "Sketching, Yoga, Cooking",
-      workSector: "Technology",
-      bio: "UX designer with a focus on accessibility and user research. Worked with design studios and in-house teams. Currently leading design at a health-tech startup in Chennai.",
-    },
-    {
-      name: "Vikram Joshi",
-      city: "Hyderabad",
-      profession: "Data Scientist",
-      image: "https://i.pravatar.cc/400?img=4",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX004",
-      company: "E-Commerce Analytics Inc.",
-      currentLocation: "Hyderabad",
-      email: "vikram.joshi@example.com",
-      phone: "+91 98765 43213",
-      hometown: "Pune",
-      bloodGroup: "AB+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Bharatiya Vidya Bhavan",
-      college: "State Engineering College",
-      parentsName: "Mr. Ashok Joshi & Mrs. Meera Joshi",
-      interests: "Chess, Running, Blogging",
-      workSector: "Technology",
-      bio: "Data scientist with an MS in CS. Specialising in ML pipelines and recommendation systems. Published a few papers; now building analytics products at a large e-commerce company.",
-    },
-    {
-      name: "Sneha Patel",
-      city: "Bangalore",
-      profession: "Backend Developer",
-      image: "https://i.pravatar.cc/400?img=5",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX005",
-      company: "CloudScale Systems",
-      currentLocation: "Bangalore",
-      email: "sneha.patel@example.com",
-      phone: "+91 98765 43214",
-      hometown: "Vadodara",
-      bloodGroup: "A+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Navrachana School",
-      college: "State Engineering College",
-      parentsName: "Mr. Rajesh Patel & Mrs. Nita Patel",
-      interests: "Guitar, Hiking, Open source",
-      workSector: "Technology",
-      bio: "Backend developer passionate about system design and performance. Contributes to Apache projects and loves solving scaling challenges. Based in Bangalore for the last 5 years.",
-    },
-    {
-      name: "Arjun Reddy",
-      city: "Delhi",
-      profession: "DevOps Engineer",
-      image: "https://i.pravatar.cc/400?img=6",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX006",
-      company: "DevOps Pro",
-      currentLocation: "Delhi",
-      email: "arjun.reddy@example.com",
-      phone: "+91 98765 43215",
-      hometown: "Vijayawada",
-      bloodGroup: "B+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Chinmaya Vidyalaya",
-      college: "State Engineering College",
-      parentsName: "Mr. Venkatesh Reddy & Mrs. Padma Reddy",
-      interests: "Gaming, Automation scripts, Music",
-      workSector: "Technology",
-      bio: "DevOps engineer with expertise in Kubernetes and cloud-native tooling. Helped multiple teams adopt CI/CD and observability. Currently with a product company in Delhi NCR.",
-    },
-    {
-      name: "Kavya Nair",
-      city: "Pune",
-      profession: "Frontend Developer",
-      image: "https://i.pravatar.cc/400?img=9",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX007",
-      company: "SaaS Design Co.",
-      currentLocation: "Pune",
-      email: "kavya.nair@example.com",
-      phone: "+91 98765 43216",
-      hometown: "Thiruvananthapuram",
-      bloodGroup: "O+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Bhavan's Vidya Mandir",
-      college: "State Engineering College",
-      parentsName: "Mr. Suresh Nair & Mrs. Indira Nair",
-      interests: "UI experiments, Dance, Travel",
-      workSector: "Technology",
-      bio: "Frontend developer with a keen eye for design and performance. Strong advocate for accessibility and modern CSS. Working on design systems at a SaaS company in Pune.",
-    },
-    {
-      name: "Rohan Singh",
-      city: "Mumbai",
-      profession: "Full Stack Engineer",
-      image: "https://i.pravatar.cc/400?img=8",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX008",
-      company: "StartupHub",
-      currentLocation: "Mumbai",
-      email: "rohan.singh@example.com",
-      phone: "+91 98765 43217",
-      hometown: "Lucknow",
-      bloodGroup: "A+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "St. Xavier's High School",
-      college: "State Engineering College",
-      parentsName: "Mr. Amar Singh & Mrs. Rekha Singh",
-      interests: "Football, Reading, Side projects",
-      workSector: "Technology",
-      bio: "Full stack engineer who enjoys owning features from DB to UI. Started in startups and now part of a growing team in Mumbai. Occasionally speaks at local meetups.",
-    },
-    {
-      name: "Divya Menon",
-      city: "Kochi",
-      profession: "ML Engineer",
-      image: "https://i.pravatar.cc/400?img=10",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX009",
-      company: "AI Research Labs",
-      currentLocation: "Kochi",
-      email: "divya.menon@example.com",
-      phone: "+91 98765 43218",
-      hometown: "Kozhikode",
-      bloodGroup: "B+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "Sacred Heart CGHSS",
-      college: "State Engineering College",
-      parentsName: "Mr. Gopal Menon & Mrs. Usha Menon",
-      interests: "Painting, Badminton, Podcasts",
-      workSector: "Technology",
-      bio: "ML engineer with research experience in NLP. Focused on bringing models to production and ensuring they are explainable. Based in Kochi, working remotely for a global team.",
-    },
-    {
-      name: "Aditya Verma",
-      city: "Bangalore",
-      profession: "Tech Lead",
-      image: "https://i.pravatar.cc/400?img=11",
-      facebook: "#",
-      linkedin: "#",
-      github: "#",
-      roll: "CSE20XX010",
-      company: "Enterprise Tech Solutions",
-      currentLocation: "Bangalore",
-      email: "aditya.verma@example.com",
-      phone: "+91 98765 43219",
-      hometown: "Ranchi",
-      bloodGroup: "O+",
-      university: "State Engineering College",
-      department: "Computer Science & Engineering",
-      batch: "2020",
-      school: "DPS R.K. Puram",
-      college: "State Engineering College",
-      parentsName: "Mr. Sanjay Verma & Mrs. Ritu Verma",
-      interests: "Coding, Mentoring, Running",
-      workSector: "Technology",
-      bio: "Tech lead with 10+ years in software. Led platform and infra teams; now heading engineering for a key vertical. Passionate about mentoring and engineering culture.",
-    },
-  ];
+  var API_BASE = "http://localhost:5000";
+  var TOKEN_KEY = "alumni_jwt";
+
+  var students = [];
 
   var searchNameEl = document.getElementById("search-name");
   var filterCityEl = document.getElementById("filter-city");
@@ -265,6 +16,239 @@
   var noResultsEl = document.getElementById("no-results");
   var profileModalEl = document.getElementById("profile-modal");
   var lastFilteredStudents = [];
+
+  var searchControlsBound = false;
+
+  function parseJsonSafe(text) {
+    if (!text || !String(text).trim()) {
+      return null;
+    }
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function strOrDash(v) {
+    if (v == null || v === "") {
+      return "—";
+    }
+    return String(v);
+  }
+
+  function socialHref(v) {
+    if (v == null || String(v).trim() === "") {
+      return "#";
+    }
+    return String(v);
+  }
+
+  function normalizeAlumniRecord(raw) {
+    if (!raw || typeof raw !== "object") {
+      raw = {};
+    }
+    var r = raw;
+    var name = strOrDash(r.name);
+    if (name === "—" && r.email) {
+      name = strOrDash(r.email);
+    }
+
+    var img =
+      r.image ||
+      r.photo ||
+      r.avatar ||
+      r.picture ||
+      "";
+    if (!img) {
+      img =
+        "https://i.pravatar.cc/400?u=" +
+        encodeURIComponent(String(r.name || r.email || "alumni"));
+    }
+
+    var city = strOrDash(r.city);
+    var currentLoc =
+      r.currentLocation != null
+        ? String(r.currentLocation)
+        : r.current_location != null
+          ? String(r.current_location)
+          : "";
+
+    return {
+      name: name,
+      city: city,
+      profession: strOrDash(r.profession),
+      image: img,
+      facebook: socialHref(r.facebook || r.facebook_url),
+      linkedin: socialHref(r.linkedin || r.linkedin_url),
+      github: socialHref(r.github || r.github_url),
+      roll: strOrDash(r.roll),
+      company: strOrDash(r.company),
+      currentLocation: currentLoc,
+      email: r.email != null ? String(r.email) : "",
+      phone: strOrDash(r.phone),
+      hometown: strOrDash(r.hometown),
+      bloodGroup: strOrDash(r.bloodGroup || r.blood_group),
+      university: strOrDash(r.university),
+      department: strOrDash(r.department),
+      batch: strOrDash(r.batch),
+      school: strOrDash(r.school),
+      college: strOrDash(r.college),
+      parentsName: strOrDash(r.parentsName || r.parents_name),
+      interests: strOrDash(r.interests),
+      workSector: strOrDash(r.workSector || r.work_sector),
+      bio: strOrDash(r.bio),
+    };
+  }
+
+  function normalizeAlumniPayload(data) {
+    var list = [];
+    if (Array.isArray(data)) {
+      list = data;
+    } else if (data && Array.isArray(data.alumni)) {
+      list = data.alumni;
+    } else if (data && Array.isArray(data.data)) {
+      list = data.data;
+    } else if (data && Array.isArray(data.results)) {
+      list = data.results;
+    }
+    return list.map(normalizeAlumniRecord);
+  }
+
+  function setSearchSectionVisible(visible) {
+    var section = document.getElementById("find");
+    if (section) {
+      section.hidden = !visible;
+    }
+  }
+
+  function showLoginPrompt() {
+    if (!studentsGridEl) {
+      return;
+    }
+    studentsGridEl.innerHTML = "";
+    var p = document.createElement("p");
+    p.className = "no-results";
+    p.appendChild(document.createTextNode("Please "));
+    var a = document.createElement("a");
+    a.href = "login.html";
+    a.textContent = "log in";
+    p.appendChild(a);
+    p.appendChild(document.createTextNode(" to view the alumni directory."));
+    studentsGridEl.appendChild(p);
+    if (noResultsEl) {
+      noResultsEl.hidden = true;
+    }
+  }
+
+  function showDirectoryError(message) {
+    if (!studentsGridEl) {
+      return;
+    }
+    studentsGridEl.innerHTML = "";
+    var p = document.createElement("p");
+    p.className = "no-results";
+    p.textContent = message;
+    studentsGridEl.appendChild(p);
+    if (noResultsEl) {
+      noResultsEl.hidden = true;
+    }
+  }
+
+  function showLoadingState() {
+    if (!studentsGridEl) {
+      return;
+    }
+    studentsGridEl.innerHTML = "";
+    var p = document.createElement("p");
+    p.className = "no-results";
+    p.textContent = "Loading alumni…";
+    studentsGridEl.appendChild(p);
+  }
+
+  function bindSearchControls() {
+    if (searchControlsBound) {
+      return;
+    }
+    searchControlsBound = true;
+    if (searchNameEl) {
+      searchNameEl.addEventListener("input", handleSearchAndFilter);
+    }
+    if (filterCityEl) {
+      filterCityEl.addEventListener("change", handleSearchAndFilter);
+    }
+  }
+
+  async function loadAlumniFromApi(token) {
+    setSearchSectionVisible(false);
+    showLoadingState();
+
+    try {
+      var res = await fetch(API_BASE + "/api/alumni", {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+          Accept: "application/json",
+        },
+      });
+
+      var rawText = await res.text();
+      var data = parseJsonSafe(rawText);
+
+      if (res.status === 401) {
+        try {
+          localStorage.removeItem(TOKEN_KEY);
+        } catch (e) {}
+        students = [];
+        lastFilteredStudents = [];
+        setSearchSectionVisible(false);
+        if (!studentsGridEl) {
+          return;
+        }
+        studentsGridEl.innerHTML = "";
+        var p401 = document.createElement("p");
+        p401.className = "no-results";
+        p401.appendChild(document.createTextNode("Your session has expired. Please "));
+        var a401 = document.createElement("a");
+        a401.href = "login.html";
+        a401.textContent = "log in again";
+        p401.appendChild(a401);
+        p401.appendChild(document.createTextNode("."));
+        studentsGridEl.appendChild(p401);
+        if (noResultsEl) {
+          noResultsEl.hidden = true;
+        }
+        return;
+      }
+
+      if (!res.ok) {
+        students = [];
+        lastFilteredStudents = [];
+        var msg = "We could not load the alumni list.";
+        if (data && typeof data.message === "string") {
+          msg = data.message;
+        } else if (data && typeof data.error === "string") {
+          msg = data.error;
+        }
+        setSearchSectionVisible(false);
+        showDirectoryError(msg + " Please try again later.");
+        return;
+      }
+
+      students = normalizeAlumniPayload(data);
+      setSearchSectionVisible(true);
+      fillCityFilter();
+      handleSearchAndFilter();
+      bindSearchControls();
+    } catch (err) {
+      students = [];
+      lastFilteredStudents = [];
+      setSearchSectionVisible(false);
+      showDirectoryError(
+        "Could not reach the server. Make sure it is running, then refresh this page."
+      );
+    }
+  }
 
   function getUniqueCities() {
     var seen = {};
@@ -609,19 +593,29 @@
   }
 
   function init() {
-    fillCityFilter();
-    handleSearchAndFilter();
-
-    if (searchNameEl) {
-      searchNameEl.addEventListener("input", handleSearchAndFilter);
-    }
-    if (filterCityEl) {
-      filterCityEl.addEventListener("change", handleSearchAndFilter);
-    }
-
     initMobileMenu();
+
+    if (!studentsGridEl) {
+      return;
+    }
+
     initProfileModal();
     initViewProfileDelegation();
+
+    var token = null;
+    try {
+      token = localStorage.getItem(TOKEN_KEY);
+    } catch (e) {
+      token = null;
+    }
+
+    if (!token) {
+      setSearchSectionVisible(false);
+      showLoginPrompt();
+      return;
+    }
+
+    loadAlumniFromApi(token);
   }
 
   if (document.readyState === "loading") {
